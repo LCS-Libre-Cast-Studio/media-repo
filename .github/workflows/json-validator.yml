@@ -1,0 +1,15 @@
+name: JSON Validator
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-row: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate JSON Syntax
+        run: |
+          jq . playlist.json
