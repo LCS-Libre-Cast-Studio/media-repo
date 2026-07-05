@@ -18,7 +18,7 @@ Every media asset must be registered within the root `playlist.json` array using
     "title": "Asset Title",
     "artist": "Content Creator Name",
     "type": "audio" | "video",
-    "url": "https://alexgaming.dev[audio|video]/filename.ext"
+    "url": "https://media.alexgaming.dev/[audio|video]/filename.ext"
   }
 ]
 ```
