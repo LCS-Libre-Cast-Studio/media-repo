@@ -1,43 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libre Cast Studio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Libre Cast Studio (LCS) — Media Storage Backend | media-repo</title>
     <style>
-        body { background-color: #000000; color: #FFFFFF; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        .spotify-bg { background-color: #121212; }
-        .player-bar { background-color: #000000; border-top: 1px solid #282828; }
-        .plyr--audio .plyr__controls { background: transparent; padding: 0; }
-        .plyr__control--pressed, .plyr__control:hover { background: #1DB954 !important; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1, h2 { border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        code {
+            background-color: rgba(27,31,35,0.05);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+        }
+        pre {
+            background-color: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow: auto;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaecef;
+            text-align: right;
+            color: #586069;
+        }
     </style>
 </head>
-<body class="h-screen flex flex-col overflow-hidden">
+<body>
 
-    <header class="flex items-center justify-between p-4 px-6">
-        <div class="flex items-center gap-4">
-            <svg class="w-8 h-8" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="4"/><path d="M40 35 L65 50 L40 65 Z" fill="white"/></svg>
-            <nav class="flex gap-6 text-sm font-bold text-zinc-400">
-                <button onclick="render('home')" class="hover:text-white">Home</button>
-                <button onclick="render('audio')" class="hover:text-white">Music</button>
-                <button onclick="render('video')" class="hover:text-white">Video</button>
-            </nav>
-        </div>
-        <input id="search" type="text" placeholder="Search..." class="bg-[#2a2a2a] border-none rounded-full px-4 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-white">
-    </header>
+    <h1>Libre Cast Studio (LCS) — Media Storage Backend</h1>
 
-    <main id="content" class="flex-grow p-6 overflow-y-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-    </main>
+    <p>This repository serves as the decentralized, open-source media storage backend and central registry for the Libre Cast Studio (LCS) streaming ecosystem. It utilizes GitHub infrastructure paired with Cloudflare edge caching to deliver high-performance, low-latency audio and video streams without commercial dependencies.</p>
 
-    <footer class="player-bar p-4 px-6 flex items-center justify-between">
-        <div class="w-full">
-            <div id="player"></div>
-        </div>
-    </footer>
+    <h2>Architecture Overview</h2>
+    <ul>
+        <li><code>/audio</code>: Contains all community-contributed audio files (.mp3, .wav, .flac).</li>
+        <li><code>/video</code>: Contains all community-contributed video files (.mp4, .mkv, .webm).</li>
+        <li><code>playlist.json</code>: The central index and single source of truth (SSOT) database read by the LCS Client Applications.</li>
+    </ul>
 
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    <script src="app.js"></script>
+    <h2>The <code>playlist.json</code> Schema</h2>
+    <p>Every media asset must be registered within the root <code>playlist.json</code> array using the following specification:</p>
+
+    <pre><code>[
+  {
+    "title": "Asset Title",
+    "artist": "Content Creator Name",
+    "type": "audio" | "video",
+    "url": "https://alexgaming.dev[audio|video]/filename.ext"
+  }
+]</code></pre>
+
+    <h2>Contribution Guidelines</h2>
+    <p>We welcome community contributions. To add your media to the network, follow the strict Git workflow:</p>
+    <ol>
+        <li><strong>Fork</strong> this repository.</li>
+        <li>Upload your media file to the appropriate directory (<code>/audio</code> or <code>/video</code>). Ensure names are lowercase and contain no spaces (use hyphens).</li>
+        <li>Append your metadata object to the end of the array in <code>playlist.json</code>.</li>
+        <li>Open a <strong>Pull Request (PR)</strong>.</li>
+    </ol>
+    <p><em>Note: All uploaded content must comply with the licensing terms specified below. Copyrighted or illegal material will be rejected immediately.</em></p>
+
+    <h2>Licensing</h2>
+    <ul>
+        <li><strong>Code and Schema Configuration</strong>: Licensed under the MIT License.</li>
+        <li><strong>Media Assets</strong>: All community-submitted media content hosted within this repository must be licensed under <a href="https://creativecommons.org">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> or marked as Public Domain (CC0). By submitting a Pull Request, you certify that you own the rights to the content or have the legal authority to distribute it under these terms.</li>
+    </ul>
+
+    <div class="footer">
+        This site is open source. <a href="https://github.com/LCS-Libre-Cast-Studio/media-repo">Improve this page</a>.
+    </div>
+
 </body>
 </html>
