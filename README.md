@@ -31,6 +31,10 @@ Every media asset must be registered within the root `playlist.json` array using
 
 Below is the live-updated directory of all streaming assets hosted within the Libre Cast Studio ecosystem.
 <!-- PLAYLIST_START -->
+
+* 🎬 **NASA** - Apollo 11 Moonwalk – Original NASA EVA Mission Video
+* 🎬 **adege** - Flowers
+
 <!-- PLAYLIST_END -->
 
 ## Contribution Guidelines
