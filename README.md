@@ -21,11 +21,17 @@ Every media asset must be registered within the root `playlist.json` array using
   {
     "title": "Asset Title",
     "artist": "Content Creator Name",
-    "type": "audio" | "video",
+    "type": "audio",
     "url": "https://media.alexgaming.dev/[audio|video]/filename.ext"
   }
 ]
 ```
+
+## Current Network Assets
+
+Below is the live-updated directory of all streaming assets hosted within the Libre Cast Studio ecosystem.
+<!-- PLAYLIST_START -->
+<!-- PLAYLIST_END -->
 
 ## Contribution Guidelines
 
