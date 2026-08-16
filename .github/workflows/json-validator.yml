@@ -9,7 +9,53 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Validate JSON Syntax
         run: |
           jq . playlist.json
+
+      - name: Update README Playlist Section
+        shell: python
+        run: |
+          import json
+          import os
+
+          # 1. Load the freshly validated playlist
+          with open('playlist.json', 'r', encoding='utf-8') as f:
+              playlist = json.load(f)
+
+          # 2. Build the Markdown list string
+          md_content = ""
+          for item in playlist:
+              icon = "🎵" if item.get('type') == 'audio' else "🎬"
+              md_content += f"* {icon} **{item.get('artist', 'Unknown')}** - {item.get('title', 'Untitled')}\n"
+
+          # 3. Read existing README
+          if os.path.exists('README.md'):
+              with open('README.md', 'r', encoding='utf-8') as f:
+                  readme = f.read()
+              
+              start_tag = "<!-- PLAYLIST_START -->"
+              end_tag = "<!-- PLAYLIST_END -->"
+
+              # 4. Inject the new list between the HTML comment placeholders
+              if start_tag in readme and end_tag in readme:
+                  before = readme.split(start_tag)[0]
+                  after = readme.split(end_tag)[1]
+                  new_readme = f"{before}{start_tag}\n\n{md_content}\n{end_tag}{after}"
+                  
+                  with open('README.md', 'w', encoding='utf-8') as f:
+                      f.write(new_readme)
+                  print("README.md successfully updated with latest tracks.")
+              else:
+                  print("Placeholders not found in README.md. Skipping injection.")
+
+      - name: Commit and Push README Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@://github.com"
+          git add README.md
+          # Only commit if the README actually changed to avoid workflow loops
+          git diff --quiet && git diff --staged --quiet || (git commit -m "docs: auto-update playlist section in README" && git push)
