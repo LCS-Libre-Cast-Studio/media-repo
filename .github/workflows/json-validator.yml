@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -25,17 +24,14 @@ jobs:
           import json
           import os
 
-          # 1. Load the freshly validated playlist
           with open('playlist.json', 'r', encoding='utf-8') as f:
               playlist = json.load(f)
 
-          # 2. Build the Markdown list string
           md_content = ""
           for item in playlist:
               icon = "🎵" if item.get('type') == 'audio' else "🎬"
               md_content += f"* {icon} **{item.get('artist', 'Unknown')}** - {item.get('title', 'Untitled')}\n"
 
-          # 3. Read existing README
           if os.path.exists('README.md'):
               with open('README.md', 'r', encoding='utf-8') as f:
                   readme = f.read()
@@ -43,7 +39,6 @@ jobs:
               start_tag = "<!-- PLAYLIST_START -->"
               end_tag = "<!-- PLAYLIST_END -->"
 
-              # 4. Inject the new list between the HTML comment placeholders
               if start_tag in readme and end_tag in readme:
                   before = readme.split(start_tag)[0]
                   after = readme.split(end_tag)[1]
@@ -60,5 +55,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          # Nur committen und pushen, wenn sich die README tatsächlich geändert hat
           git diff --quiet && git diff --staged --quiet || (git commit -m "docs: auto-update playlist section in README" && git push origin HEAD:${{ github.head_ref }})
