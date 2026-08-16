@@ -1,6 +1,9 @@
 # Libre Cast Studio (LCS) — Media Storage Backend
 
 This repository serves as the decentralized, open-source media storage backend and central registry for the Libre Cast Studio (LCS) streaming ecosystem. It utilizes GitHub infrastructure paired with Cloudflare edge caching to deliver high-performance, low-latency audio and video streams without commercial dependencies.
+> [!WARNING]
+> **Unlicensed or unverified submissions without a direct license tag in the PR or prior verification via email will be rejected immediately without discussion.**
+
 
 ## Architecture Overview
 
@@ -12,6 +15,7 @@ This repository serves as the decentralized, open-source media storage backend a
 
 Every media asset must be registered within the root `playlist.json` array using the following specification:
 
+*(Note: The `"type"` field only accepts the exact values `"audio"` or `"video"`)*:
 ```json
 [
   {
