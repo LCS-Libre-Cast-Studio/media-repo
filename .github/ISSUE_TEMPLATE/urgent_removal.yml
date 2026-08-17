@@ -1,0 +1,28 @@
+name: URGENT Content Removal Request
+description: Request an immediate takedown of content due to copyright infringement or legal issues.
+title: "[URGENT REMOVAL]: "
+labels: ["removal-requested", "type: removal-request", "status: content-removed"]
+body:
+  - type: textarea
+    id: infringing-content
+    attributes:
+      label: Content to Remove
+      description: Specify the exact track, video, or entry that must be taken down.
+      placeholder: "Artist - Title, URL in repo, or file path"
+    validations:
+      required: true
+  - type: textarea
+    id: legal-reason
+    attributes:
+      label: Reason for Removal & Ownership Proof
+      description: Briefly state why this content violates your rights or why removal is mandatory.
+      placeholder: "I am the original copyright holder / unauthorized distribution..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm that I am either the rights holder or legally authorized to act on their behalf.
+          required: true
