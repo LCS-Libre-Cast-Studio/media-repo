@@ -1,0 +1,25 @@
+name: Content & Copyright Request
+description: Submit a new media addition, metadata fix, or a content removal/legal request.
+title: "[Request]: "
+labels: ["type: general-inquiry"]
+body:
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      description: What is the nature of this issue?
+      options:
+        - Submitting new media or content
+        - Requesting content removal (Copyright / DMCA)
+        - Metadata or JSON fix
+        - Legal inquiry / Notice
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details / Links / Track Info
+      description: Provide URLs, artist names, or context regarding the copyright status.
+      placeholder: "Artist - Title, License details, etc."
+    validations:
+      required: true
