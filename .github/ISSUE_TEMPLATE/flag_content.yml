@@ -1,0 +1,32 @@
+name: Flag / Report Content
+description: Report media that violates repository guidelines, quality standards, or policies.
+title: "[Flag]: "
+labels: ["help-wanted", "usage: restricted"]
+body:
+  - type: input
+    id: target-media
+    attributes:
+      label: Flagged Media
+      description: Name the file or playlist entry you are flagging.
+      placeholder: "Artist - Title"
+    validations:
+      required: true
+  - type: dropdown
+    id: flag-reason
+    attributes:
+      label: Reason for Flagging
+      options:
+        - Violates community guidelines or content policy
+        - Misleading metadata / Wrong artist or title
+        - Low quality / Corrupted media file
+        - Other policy violation
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Additional Details
+      description: Explain why this content needs attention from moderators.
+      placeholder: "Describe the issue..."
+    validations:
+      required: true
