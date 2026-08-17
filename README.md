@@ -27,17 +27,6 @@ Every media asset must be registered within the root `playlist.json` array using
 ]
 ```
 
-## Current Network Assets
-
-Below is the live-updated directory of all streaming assets hosted within the Libre Cast Studio ecosystem.
-<!-- PLAYLIST_START -->
-
-* 🎬 **NASA** - Apollo 11 Moonwalk – Original NASA EVA Mission Video
-* 🎵 **andriig** - Sunny Morning Music
-* 🎬 **adege** - Flowers
-
-<!-- PLAYLIST_END -->
-
 ## Contribution Guidelines
 
 We welcome community contributions. To add your media to the network, follow the strict Git workflow:
@@ -53,3 +42,14 @@ We welcome community contributions. To add your media to the network, follow the
 
 * **Code and Schema Configuration**: Licensed under the [MIT License](LICENSE).
 * **Media Assets**: All community-submitted media content hosted within this repository must be licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org) or marked as Public Domain (CC0). By submitting a Pull Request, you certify that you own the rights to the content or have the legal authority to distribute it under these terms.
+
+## Current Network Assets
+
+Below is the live-updated directory of all streaming assets hosted within the Libre Cast Studio ecosystem.
+<!-- PLAYLIST_START -->
+
+* 🎬 **NASA** - Apollo 11 Moonwalk – Original NASA EVA Mission Video
+* 🎵 **andriig** - Sunny Morning Music
+* 🎬 **adege** - Flowers
+
+<!-- PLAYLIST_END -->
