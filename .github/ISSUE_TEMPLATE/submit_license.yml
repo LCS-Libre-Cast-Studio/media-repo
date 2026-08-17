@@ -1,0 +1,32 @@
+name: Submit License / Permission Proof
+description: Provide licensing details, Creative Commons proof, or usage permission for media.
+title: "[License]: "
+labels: ["license-requested", "license: cc"]
+body:
+  - type: input
+    id: media-reference
+    attributes:
+      label: Media / Track Title & Artist
+      description: Which track or video does this license apply to?
+      placeholder: "Artist - Title or filename"
+    validations:
+      required: true
+  - type: dropdown
+    id: license-type
+    attributes:
+      label: License Type
+      options:
+        - Creative Commons (CC)
+        - Public Domain / CC0
+        - Explicit Written Permission / Broadcast License
+        - Original Creator Rights
+    validations:
+      required: true
+  - type: textarea
+    id: proof-details
+    attributes:
+      label: Proof / Source / Link
+      description: Provide URLs to the license text, proof of permission, or owner statements.
+      placeholder: "https://creativecommons.org... or transaction/permission ID"
+    validations:
+      required: true
