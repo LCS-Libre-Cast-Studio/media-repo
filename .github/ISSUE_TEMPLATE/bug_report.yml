@@ -1,0 +1,13 @@
+name: Technical / JSON Issue
+description: Report a broken playlist or technical issue with the repository.
+title: "[Bug]: "
+labels: ["status: invalid-json", "help-wanted"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe what is broken.
+      placeholder: "The playlist.json fails to validate because..."
+    validations:
+      required: true
